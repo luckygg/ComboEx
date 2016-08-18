@@ -60,7 +60,8 @@ BOOL CListBoxEx::CreateContol(CWnd* pWnd, CRect rcSize, UINT ID)
 	//BOOL ret = Create(WS_CHILD|WS_VISIBLE|WS_TABSTOP|WS_VSCROLL|LBS_OWNERDRAWVARIABLE|LBS_HASSTRINGS|LBS_NOTIFY, rcSize, pWnd, ID );
 	BOOL ret = Create(WS_CHILD|WS_VISIBLE|WS_TABSTOP|LBS_OWNERDRAWVARIABLE|LBS_HASSTRINGS|LBS_NOTIFY, rcSize, pWnd, ID );
 
-	m_rcSBV = CRect(rcSize.right-20,0,rcSize.right,rcSize.Height());
+	m_rcSBV = CRect(rcSize.Width()-20,0,rcSize.Width(),rcSize.Height());
+	//m_rcSBV = CRect(rcSize.right-20,0,rcSize.right,rcSize.Height());
 
 	m_pwndSBV = new CScrollBarEx();
 	m_pwndSBV->CreateContol(this,false,m_rcSBV,2020);
@@ -83,7 +84,8 @@ BOOL CListBoxEx::InitControl(CWnd* pWnd)
 	//ret = Create(WS_CHILD|WS_VISIBLE|WS_TABSTOP|WS_VSCROLL|LBS_OWNERDRAWVARIABLE|LBS_HASSTRINGS, rect, pWnd, id );
 	ret = Create(WS_CHILD|WS_VISIBLE|WS_TABSTOP|LBS_OWNERDRAWVARIABLE|LBS_HASSTRINGS, rect, pWnd, id );
 	
-	m_rcSBV = CRect(rect.right-20,0,rect.right,rect.Height());
+	m_rcSBV = CRect(rect.Width()-20,0,rect.Width(),rect.Height());
+	//m_rcSBV = CRect(rect.right-20,0,rect.right,rect.Height());
 
 	m_pwndSBV = new CScrollBarEx();
 	m_pwndSBV->CreateContol(this,false,m_rcSBV,2020);
