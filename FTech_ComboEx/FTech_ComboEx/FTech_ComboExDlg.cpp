@@ -49,13 +49,14 @@ BOOL CFTech_ComboExDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	m_cbTest.InitControl(this);
-	m_cbTest.SetItemLBHeight(20);
-	m_cbTest.AddString(L"TEXT1");
-	m_cbTest.AddString(L"TEXT2");
-	m_cbTest.AddString(L"TEXT3");
-	m_cbTest.AddString(L"TEXT4");
-	m_cbTest.AddString(L"TEXT5");
-	m_cbTest.AddString(L"TEXT6");
+	m_cbTest.SetItemLBHeight(25);
+	for (int i=0; i<13; i++)
+	{
+		CString text=L"";
+		text.Format(L"Text %d",i);
+		m_cbTest.AddString(text);
+	}
+	
 	m_cbTest.SetColorLBItemNomal(255,61,61,61);
 	m_cbTest.SetColorLBItemHot(255,81,81,81);
 	m_cbTest.SetColorLBBkg(255,61,61,61);
@@ -65,6 +66,7 @@ BOOL CFTech_ComboExDlg::OnInitDialog()
 
 	m_cbTest.LoadBtnImageFromFile(L"combo.png");
 	m_cbTest.SetColorBtnBorder(255,97,97,97);
+	
 	CRect rcBtn = m_cbTest.GetSizeBtn();
 	m_cbTest.SetSizeBtnImage(rcBtn.left,rcBtn.top,rcBtn.Width(),rcBtn.Height());
 	m_cbTest.SetSizeBtnText(14);
@@ -119,5 +121,5 @@ void CFTech_ComboExDlg::OnDestroy()
 
 void CFTech_ComboExDlg::OnBnClickedButton1()
 {
-	m_cbTest.SetSizeLBHeight(100);
+	m_cbTest.SetSizeLBHeight(250);
 }

@@ -54,6 +54,9 @@
     <ClInclude Include="ComboEx.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="ScrollBarEx.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FTech_ComboEx.cpp">
@@ -75,6 +78,9 @@
       <Filter>include</Filter>
     </ClCompile>
     <ClCompile Include="ComboEx.cpp">
+      <Filter>include</Filter>
+    </ClCompile>
+    <ClCompile Include="ScrollBarEx.cpp">
       <Filter>include</Filter>
     </ClCompile>
   </ItemGroup>

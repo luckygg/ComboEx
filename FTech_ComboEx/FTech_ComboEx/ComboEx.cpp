@@ -14,7 +14,8 @@ CComboEx::CComboEx()
 	RegisterWindowClass();
 	m_pwndBtn	= NULL;
 	m_pwndLB	= NULL;
-	m_nLBHeight = 60;
+	m_nLBHeight = 100;
+	m_pParent	= NULL;
 }
 
 CComboEx::~CComboEx()
@@ -61,6 +62,8 @@ bool CComboEx::InitControl(CWnd* pWnd)
 {
 	if (pWnd == NULL) return false;
 
+	m_pParent = pWnd;
+
 	CRect rect;
 	GetClientRect(&rect);
 
@@ -94,13 +97,13 @@ void CComboEx::SetSizeLBHeight(int nHeight)
 
 	CRect rcWnd;
 	GetWindowRect(&rcWnd);
-	GetParent()->ScreenToClient(&rcWnd);
+	m_pParent->ScreenToClient(&rcWnd);
 
-	rect.bottom += m_nLBHeight;
-	rcWnd.bottom+=m_nLBHeight;
+	rect.bottom  = m_nLBHeight;
+	rcWnd.bottom += m_nLBHeight;
 
 	MoveWindow(rcWnd);
-
+	
 	m_pwndLB->MoveWindow(CRect(rect.left,20,rect.right,rect.bottom));
 }
 

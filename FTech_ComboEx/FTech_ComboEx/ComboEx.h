@@ -97,6 +97,7 @@ public:
 	bool LoadBtnImageFromResource(UINT ID, bool bPNG) { return m_pwndBtn->LoadImageFromResource(ID, bPNG); }
 
 private :
+	CWnd*		m_pParent;
 	CButtonEx*	m_pwndBtn;
 	CListBoxEx*	m_pwndLB;
 	int			m_nLBHeight;
