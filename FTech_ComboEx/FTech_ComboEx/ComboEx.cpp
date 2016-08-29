@@ -116,7 +116,10 @@ BOOL CComboEx::OnCommand(WPARAM wParam, LPARAM lParam)
 	if(wParam == m_pwndBtn->GetDlgCtrlID())
 	{
 		if (m_pwndLB->IsWindowVisible() == TRUE)
+		{
 			m_pwndLB->ShowWindow(SW_HIDE);
+			GetParent()->Invalidate(FALSE);
+		}
 		else
 		{
 			m_pwndLB->ShowWindow(SW_SHOW);
