@@ -53,7 +53,7 @@ void CComboEx::RegisterWindowClass(void)
 	wndcls.hCursor          = AfxGetApp()->LoadStandardCursor(IDC_ARROW);
 	wndcls.hbrBackground    = (HBRUSH) (COLOR_3DFACE + 1);
 	wndcls.lpszMenuName     = NULL;
-	wndcls.lpszClassName    = SKIN_COMBOEX_WINCLASSNAME;
+	wndcls.lpszClassName    = COMBOEX_WINCLASSNAME;
 
 	AfxRegisterClass(&wndcls);
 }
