@@ -67,6 +67,8 @@ bool CComboEx::InitControl(CWnd* pWnd)
 	CRect rect;
 	GetClientRect(&rect);
 
+	int nHeight = rect.Height();
+
 	CRect rcWnd;
 	GetWindowRect(&rcWnd);
 	pWnd->ScreenToClient(&rcWnd);
@@ -79,9 +81,9 @@ bool CComboEx::InitControl(CWnd* pWnd)
 	m_pwndBtn = new CButtonEx();
 	m_pwndLB = new CListBoxEx();
 
-	m_pwndBtn->CreateContol(this,CRect(rect.left,rect.top,rect.right,20),IDX_BUTTON_CTRL);
+	m_pwndBtn->CreateContol(this,CRect(rect.left,rect.top,rect.right,nHeight),IDX_BUTTON_CTRL);
 
-	m_pwndLB->CreateContol(this,CRect(rect.left,20,rect.right,rect.bottom),IDX_LISTBOX_CTRL);
+	m_pwndLB->CreateContol(this,CRect(rect.left,nHeight,rect.right,rect.bottom),IDX_LISTBOX_CTRL);
 
 	m_pwndLB->ShowWindow(SW_HIDE);
 
