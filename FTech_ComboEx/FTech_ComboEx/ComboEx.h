@@ -98,7 +98,7 @@ public:
 
 	int GetCountItem() { return m_pwndLB->GetCount(); }
 	CString GetItemText(int nIndex) { CString value=L""; m_pwndLB->GetText(nIndex, value); return value; }
-	void SelectItem(int nIndex) { m_pwndLB->SetCurSel(nIndex); }
+	void SelectItem(int nIndex) { CString value=L""; value = GetItemText(nIndex); SetBtnText(value); m_pwndLB->SetCurSel(nIndex); }
 	int GetSelectedItem() { return m_pwndLB->GetCurSel(); }
 private :
 	CWnd*		m_pParent;
