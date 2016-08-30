@@ -135,6 +135,7 @@ BOOL CComboEx::OnCommand(WPARAM wParam, LPARAM lParam)
 			MoveWindow(m_rcWnd);
 			m_pwndLB->ShowWindow(SW_SHOW);
 			m_pwndLB->SetFocus();
+
 		}
 	} 
 	

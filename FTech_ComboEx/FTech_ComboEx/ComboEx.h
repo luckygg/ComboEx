@@ -96,6 +96,7 @@ public:
 	bool LoadBtnImageFromFile(CString strPath) { return m_pwndBtn->LoadImageFromFile(strPath); }
 	bool LoadBtnImageFromResource(UINT ID, bool bPNG) { return m_pwndBtn->LoadImageFromResource(ID, bPNG); }
 
+	int GetCountItem() { return m_pwndLB->GetCount(); }
 private :
 	CWnd*		m_pParent;
 	CButtonEx*	m_pwndBtn;

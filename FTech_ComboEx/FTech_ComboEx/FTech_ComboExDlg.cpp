@@ -77,7 +77,6 @@ BOOL CFTech_ComboExDlg::OnInitDialog()
 	m_cbTest.SetAlignBtnTextCM();
 	m_cbTest.SetOffsetBtnText(-20,0);
 
-
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
