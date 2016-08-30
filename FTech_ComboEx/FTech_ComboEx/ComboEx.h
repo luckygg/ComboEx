@@ -16,6 +16,7 @@
 
 #define COMBOEX_WINCLASSNAME L"COMBOEX_CLASS"
 
+#define WM_CLICK_MESSAGE  (WM_USER+1)
 // CComboEx
 
 class CComboEx : public CComboBox

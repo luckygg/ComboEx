@@ -125,3 +125,21 @@ void CFTech_ComboExDlg::OnBnClickedButton1()
 {
 	m_cbTest.SetSizeLBHeight(250);
 }
+
+BOOL CFTech_ComboExDlg::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
+{
+	NMHDR* pNmHdr = (NMHDR*)lParam;
+
+	if(pNmHdr->idFrom == m_cbTest.GetDlgCtrlID())
+	{
+		switch(pNmHdr->code)
+		{
+		case WM_CLICK_MESSAGE :
+			{
+				AfxMessageBox(L"Combo List Clicked!");
+				break;
+			}
+		}
+	}
+	return CWnd::OnNotify(wParam, lParam, pResult);
+}

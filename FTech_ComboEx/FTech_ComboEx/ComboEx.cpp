@@ -151,5 +151,13 @@ void CComboEx::OnClickedListBox()
 	m_pwndBtn->SetText(text);
 	m_pwndLB->ShowWindow(SW_HIDE);
 	MoveWindow(m_rcCtrl);
+
+	NMHDR nmHdr;
+	::ZeroMemory(&nmHdr, sizeof(NMHDR));
+
+	nmHdr.hwndFrom = m_hWnd;
+	nmHdr.idFrom = GetDlgCtrlID();
+	nmHdr.code = WM_CLICK_MESSAGE;
+	GetParent()->SendMessage(WM_NOTIFY, (LPARAM)NULL, (WPARAM)&nmHdr);
 }
 

@@ -28,6 +28,7 @@ protected:
 	virtual BOOL OnInitDialog();
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
+	afx_msg BOOL OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult);
 	DECLARE_MESSAGE_MAP()
 public:
 	CComboEx m_cbTest;
