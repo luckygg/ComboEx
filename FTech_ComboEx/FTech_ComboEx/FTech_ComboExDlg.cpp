@@ -47,6 +47,9 @@ BOOL CFTech_ComboExDlg::OnInitDialog()
 	//  when the application's main window is not a dialog
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
+	
+	this->SetBackgroundColor( RGB(128,255,128), 0 ) ;
+
 
 	m_cbTest.InitControl(this);
 	m_cbTest.SetItemLBHeight(25);
@@ -63,7 +66,7 @@ BOOL CFTech_ComboExDlg::OnInitDialog()
 	m_cbTest.SetSizeLBText(15);
 	m_cbTest.SetColorLBTextHot(255,160,160,160);
 	m_cbTest.SetAlignLBTextCM();
-
+	
 	m_cbTest.LoadBtnImageFromFile(L"combo.png");
 	m_cbTest.SetColorBtnBorder(255,97,97,97);
 	

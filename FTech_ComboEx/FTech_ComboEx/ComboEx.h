@@ -101,6 +101,8 @@ private :
 	CButtonEx*	m_pwndBtn;
 	CListBoxEx*	m_pwndLB;
 	int			m_nLBHeight;
+	CRect		m_rcWnd;
+	CRect		m_rcCtrl;
 
 	virtual BOOL OnCommand(WPARAM wParam, LPARAM lParam);
 	void RegisterWindowClass(void);

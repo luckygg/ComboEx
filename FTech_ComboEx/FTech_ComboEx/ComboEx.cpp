@@ -16,6 +16,9 @@ CComboEx::CComboEx()
 	m_pwndLB	= NULL;
 	m_nLBHeight = 100;
 	m_pParent	= NULL;
+
+	m_rcCtrl	= CRect(0,0,0,0);
+	m_rcWnd		= CRect(0,0,0,0);
 }
 
 CComboEx::~CComboEx()
@@ -73,18 +76,22 @@ bool CComboEx::InitControl(CWnd* pWnd)
 	GetWindowRect(&rcWnd);
 	pWnd->ScreenToClient(&rcWnd);
 	
+	m_rcCtrl = rcWnd;
+
 	rect.bottom += m_nLBHeight;
 	rcWnd.bottom+=m_nLBHeight;
 	
-	MoveWindow(rcWnd);
+	m_rcWnd = rcWnd;
+	//MoveWindow(rcWnd);
 
 	m_pwndBtn = new CButtonEx();
 	m_pwndLB = new CListBoxEx();
 
 	m_pwndBtn->CreateContol(this,CRect(rect.left,rect.top,rect.right,nHeight),IDX_BUTTON_CTRL);
-
+	
+	//m_pwndLB->CreateContol(pWnd,CRect(rcWnd.left,rcWnd.top+nHeight,rcWnd.right,rcWnd.bottom),IDX_LISTBOX_CTRL);
 	m_pwndLB->CreateContol(this,CRect(rect.left,nHeight,rect.right,rect.bottom),IDX_LISTBOX_CTRL);
-
+	
 	m_pwndLB->ShowWindow(SW_HIDE);
 
 	return true;
@@ -101,12 +108,15 @@ void CComboEx::SetSizeLBHeight(int nHeight)
 	GetWindowRect(&rcWnd);
 	m_pParent->ScreenToClient(&rcWnd);
 
+	m_rcCtrl = rcWnd;
+
 	rect.bottom  = m_nLBHeight;
 	rcWnd.bottom += m_nLBHeight;
 
-	MoveWindow(rcWnd);
+	m_rcWnd = rcWnd;
+	//MoveWindow(rcWnd);
 	
-	m_pwndLB->MoveWindow(CRect(rect.left,20,rect.right,rect.bottom));
+	m_pwndLB->MoveWindow(CRect(rect.left,m_rcCtrl.Height(),rect.right,rect.bottom+m_rcCtrl.Height()));
 }
 
 // CComboEx message handlers
@@ -117,11 +127,12 @@ BOOL CComboEx::OnCommand(WPARAM wParam, LPARAM lParam)
 	{
 		if (m_pwndLB->IsWindowVisible() == TRUE)
 		{
+			MoveWindow(m_rcCtrl);
 			m_pwndLB->ShowWindow(SW_HIDE);
-			GetParent()->Invalidate(FALSE);
 		}
 		else
 		{
+			MoveWindow(m_rcWnd);
 			m_pwndLB->ShowWindow(SW_SHOW);
 			m_pwndLB->SetFocus();
 		}
@@ -138,7 +149,6 @@ void CComboEx::OnClickedListBox()
 
 	m_pwndBtn->SetText(text);
 	m_pwndLB->ShowWindow(SW_HIDE);
-
-	GetParent()->Invalidate(FALSE);
+	MoveWindow(m_rcCtrl);
 }
 
