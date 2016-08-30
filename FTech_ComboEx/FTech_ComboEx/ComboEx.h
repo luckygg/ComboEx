@@ -29,6 +29,7 @@ public:
 
 	//----- Init Control -----//
 	bool InitControl(CWnd* pWnd);
+	void SetEnable(bool bEnable) { m_bEnable = bEnable; m_pwndBtn->SetEnable(bEnable); Invalidate(); }
 	
 	//-------------------- List Box Control --------------------//
 	//----- Add Item -----//
@@ -108,6 +109,7 @@ private :
 	int			m_nLBHeight;
 	CRect		m_rcWnd;
 	CRect		m_rcCtrl;
+	bool		m_bEnable;
 
 	virtual BOOL OnCommand(WPARAM wParam, LPARAM lParam);
 	void RegisterWindowClass(void);

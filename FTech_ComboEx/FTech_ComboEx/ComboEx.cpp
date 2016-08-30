@@ -19,6 +19,8 @@ CComboEx::CComboEx()
 
 	m_rcCtrl	= CRect(0,0,0,0);
 	m_rcWnd		= CRect(0,0,0,0);
+
+	m_bEnable	= true;
 }
 
 CComboEx::~CComboEx()
