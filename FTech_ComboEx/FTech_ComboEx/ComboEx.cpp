@@ -138,5 +138,7 @@ void CComboEx::OnClickedListBox()
 
 	m_pwndBtn->SetText(text);
 	m_pwndLB->ShowWindow(SW_HIDE);
+
+	GetParent()->Invalidate(FALSE);
 }
 
