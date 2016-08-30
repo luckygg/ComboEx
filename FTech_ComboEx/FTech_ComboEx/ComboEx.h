@@ -97,6 +97,7 @@ public:
 	bool LoadBtnImageFromResource(UINT ID, bool bPNG) { return m_pwndBtn->LoadImageFromResource(ID, bPNG); }
 
 	int GetCountItem() { return m_pwndLB->GetCount(); }
+	CString GetItemText(int nIndex) { CString value=L""; m_pwndLB->GetText(nIndex, value); return value; }
 private :
 	CWnd*		m_pParent;
 	CButtonEx*	m_pwndBtn;
