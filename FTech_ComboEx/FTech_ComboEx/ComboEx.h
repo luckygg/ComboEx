@@ -101,7 +101,8 @@ public:
 	int GetCountItem() { return m_pwndLB->GetCount(); }
 	CString GetItemText(int nIndex) { CString value=L""; m_pwndLB->GetText(nIndex, value); return value; }
 	void SelectItem(int nIndex) { CString value=L""; value = GetItemText(nIndex); SetBtnText(value); m_pwndLB->SetCurSel(nIndex); }
-	int GetSelectedItem() { return m_pwndLB->GetCurSel(); }
+	int GetSelectedItemIndex() { return m_pwndLB->GetCurSel(); }
+	CString GetSelectedItemText() { int n = GetSelectedItemIndex(); if (n>0) return GetItemText(n); else return L""; }
 private :
 	CWnd*		m_pParent;
 	CButtonEx*	m_pwndBtn;
