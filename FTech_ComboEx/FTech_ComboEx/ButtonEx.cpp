@@ -9,7 +9,7 @@
 
 IMPLEMENT_DYNAMIC(CButtonEx, CButton)
 
-	CButtonEx::CButtonEx()
+CButtonEx::CButtonEx()
 {
 	m_clrBkg	= Color(255,255,  0,  0);
 	m_clrText	= Color(255,255,255,255);
@@ -151,7 +151,7 @@ void CButtonEx::DrawBorder(Graphics *pG)
 	Pen pen(m_clrBorder,m_fSizeBorder);
 
 	pG->DrawRectangle(&pen,rect.left,rect.top,rect.Width(),rect.Height());
-
+	
 }
 
 void CButtonEx::DrawBkg(Graphics *pG)
@@ -172,10 +172,10 @@ void CButtonEx::DrawImage(Graphics *pG)
 	if (m_pBmpImage == NULL) return;
 
 	Rect rcNew(m_rcImage);
-
+	
 	if (m_bClicked == true)
 		rcNew.Offset(1,1);
-
+	
 	pG->DrawImage(m_pBmpImage, rcNew, 0,0, m_pBmpImage->GetWidth(), m_pBmpImage->GetHeight(), UnitPixel);
 }
 
@@ -195,7 +195,7 @@ void CButtonEx::DrawText(Graphics *pG)
 	formatAlign.SetLineAlignment((Gdiplus::StringAlignment)m_nTextAlign2);	// Top / Middle / Bottom
 
 	SolidBrush brs(m_clrText);
-
+	
 	RectF rc((float)rect.left+m_nOffsetTextX, (float)rect.top+m_nOffsetTextY, (float)rect.Width(),(float)rect.Height());
 	if (m_bClicked == true)
 		rc.Offset(1,1);
@@ -334,4 +334,34 @@ void CButtonEx::OnLButtonUp(UINT nFlags, CPoint point)
 	m_bClicked = false;
 
 	CButton::OnLButtonUp(nFlags, point);
+}
+
+void CButtonEx::SetColorBkg(int nA, COLORREF clrColor)
+{
+	int r = GetRValue(clrColor);
+	int g = GetGValue(clrColor);
+	int b = GetBValue(clrColor);
+
+	m_clrBkg = Color(nA, r, g, b); 
+	Invalidate();
+}
+
+void CButtonEx::SetColorBorder(int nA, COLORREF clrColor)
+{
+	int r = GetRValue(clrColor);
+	int g = GetGValue(clrColor);
+	int b = GetBValue(clrColor);
+
+	m_clrBorder = Color(nA, r, g, b); 
+	Invalidate();
+}
+
+void CButtonEx::SetColorText(int nA, COLORREF clrColor)
+{
+	int r = GetRValue(clrColor);
+	int g = GetGValue(clrColor);
+	int b = GetBValue(clrColor);
+
+	m_clrText = Color(nA, r, g, b); 
+	Invalidate();
 }

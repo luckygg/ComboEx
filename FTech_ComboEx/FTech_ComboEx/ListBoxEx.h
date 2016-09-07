@@ -5,6 +5,9 @@
 //----------------------------------------------------------
 // Programmed by William Kim
 //----------------------------------------------------------
+// Last Update : 2016-09-07 18:50
+// Modified by William Kim
+//----------------------------------------------------------
 
 #include "ScrollBarEx.h"
 // CListBoxEx
@@ -18,7 +21,7 @@ public:
 	virtual ~CListBoxEx();
 
 public :
-	
+
 	//----- Dynamic Create Control -----//
 	BOOL CreateContol(CWnd* pWnd, CRect rcSize, UINT ID);
 
@@ -42,6 +45,13 @@ public :
 	void SetColorItemNomal	(int nA, int nR, int nG, int nB) { m_clrItemNom1 = Color(nA, nR, nG, nB); m_bModeOneColor = true; Invalidate(); }
 	void SetColorItemNomal	(int nA1, int nR1, int nG1, int nB1, int nA2, int nR2, int nG2, int nB2) { 
 		m_clrItemNom1 = Color(nA1, nR1, nG1, nB1); m_clrItemNom2 = Color(nA2, nR2, nG2, nB2); m_bModeOneColor = false; Invalidate(); }
+	void SetColorBkg		(int nA, COLORREF clrColor);
+	void SetColorBorder		(int nA, COLORREF clrColor);
+	void SetColorTextHot	(int nA, COLORREF clrColor);
+	void SetColorTextNormal	(int nA, COLORREF clrColor);
+	void SetColorItemHot	(int nA, COLORREF clrColor);
+	void SetColorItemNomal	(int nA, COLORREF clrColor);
+	void SetColorItemNomal	(int nA1, COLORREF clrColor1, int nA2, COLORREF clrColor2);
 
 	//----- Set Offset -----//
 	void SetOffsetText	(int nX, int nY) { m_nOffsetTextX = nX; m_nOffsetTextY = nY; Invalidate(); }
@@ -65,12 +75,12 @@ public :
 		m_pwndSBV->SetColorArrow(nNomA, nNomR, nNomG, nNomB, nHiA, nHiR, nHiG, nHiB); }
 	void SetSBColorArrowBox(int nNomA, int nNomR, int nNomG, int nNomB, int nHiA, int nHiR, int nHiG, int nHiB) { 
 		m_pwndSBV->SetColorArrowBox(nNomA, nNomR, nNomG, nNomB, nHiA, nHiR, nHiG, nHiB); }
-		
+
 private :
 	void DrawBorder(Graphics *pG, CRect rcRect);
 	void DrawItem(Graphics *pG, CRect rcItem, Color clrItem);
 	void DrawText(Graphics *pG, CRect rcItem, CString strText, Color clrText);
-	
+
 	CScrollBarEx* m_pwndSBV;
 	CRect	m_rcSBV;
 	bool	m_bModeOneColor;

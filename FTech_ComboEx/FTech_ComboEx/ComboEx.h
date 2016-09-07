@@ -5,8 +5,10 @@
 //----------------------------------------------------------
 // Programmed by William Kim
 //----------------------------------------------------------
+// Last Update : 2016-09-07 18:57
+// Modified by William Kim
+//----------------------------------------------------------
 
-#include "LabelEx.h"
 #include "ButtonEx.h"
 #include "ListBoxEx.h"
 
@@ -50,6 +52,13 @@ public:
 	void SetColorLBItemHot		(int nA, int nR, int nG, int nB) { m_pwndLB->SetColorItemHot(nA,nR,nG,nB);		}
 	void SetColorLBItemNomal	(int nA, int nR, int nG, int nB) { m_pwndLB->SetColorItemNomal(nA,nR,nG,nB);	}
 	void SetColorLBItemNomal	(int nA1, int nR1, int nG1, int nB1, int nA2, int nR2, int nG2, int nB2) { m_pwndLB->SetColorItemNomal(nA1,nR1,nG1,nB1,nA2,nR2,nG2,nB2); }
+	void SetColorLBBkg			(int nA, COLORREF clrColor) { m_pwndLB->SetColorBkg(nA,clrColor);			}
+	void SetColorLBBorder		(int nA, COLORREF clrColor) { m_pwndLB->SetColorBorder(nA,clrColor);		}
+	void SetColorLBTextHot		(int nA, COLORREF clrColor) { m_pwndLB->SetColorTextHot(nA,clrColor);		}
+	void SetColorLBTextNormal	(int nA, COLORREF clrColor) { m_pwndLB->SetColorTextNormal(nA,clrColor);	}
+	void SetColorLBItemHot		(int nA, COLORREF clrColor) { m_pwndLB->SetColorItemHot(nA,clrColor);		}
+	void SetColorLBItemNomal	(int nA, COLORREF clrColor) { m_pwndLB->SetColorItemNomal(nA,clrColor);		}
+	void SetColorLBItemNomal	(int nA1, COLORREF clrColor1, int nA2, COLORREF clrColor2) { m_pwndLB->SetColorItemNomal(nA1,clrColor1,nA2,clrColor2); }
 
 	//----- Set Offset -----//
 	void SetOffsetLBText(int nX, int nY) { m_pwndLB->SetOffsetText(nX,nY); }
@@ -79,9 +88,12 @@ public:
 	CRect GetSizeBtn() { CRect rcSize; m_pwndBtn->GetClientRect(&rcSize); return rcSize; }
 
 	//----- Set Color -----//
-	void SetColorBtnBkg	(int nA, int nR, int nG, int nB) { m_pwndBtn->SetColorBkg(nA,nR,nG,nB);		}
+	void SetColorBtnBkg		(int nA, int nR, int nG, int nB) { m_pwndBtn->SetColorBkg(nA,nR,nG,nB);		}
 	void SetColorBtnBorder	(int nA, int nR, int nG, int nB) { m_pwndBtn->SetColorBorder(nA,nR,nG,nB);	}
 	void SetColorBtnText	(int nA, int nR, int nG, int nB) { m_pwndBtn->SetColorText(nA,nR,nG,nB);	}
+	void SetColorBtnBkg		(int nA, COLORREF clrColor) { m_pwndBtn->SetColorBkg(nA,clrColor);		}
+	void SetColorBtnBorder	(int nA, COLORREF clrColor) { m_pwndBtn->SetColorBorder(nA,clrColor);	}
+	void SetColorBtnText	(int nA, COLORREF clrColor) { m_pwndBtn->SetColorText(nA,clrColor);		}
 
 	//----- Set Text Alignment -----//
 	void SetAlignBtnTextLT() { m_pwndBtn->SetAlignTextLT(); } 

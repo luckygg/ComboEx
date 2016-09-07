@@ -45,9 +45,6 @@
     <ClInclude Include="ButtonEx.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="LabelEx.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="ListBoxEx.h">
       <Filter>include</Filter>
     </ClInclude>
@@ -69,9 +66,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ButtonEx.cpp">
-      <Filter>include</Filter>
-    </ClCompile>
-    <ClCompile Include="LabelEx.cpp">
       <Filter>include</Filter>
     </ClCompile>
     <ClCompile Include="ListBoxEx.cpp">

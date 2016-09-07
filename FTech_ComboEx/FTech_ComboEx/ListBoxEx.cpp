@@ -28,7 +28,7 @@ IMPLEMENT_DYNAMIC(CListBoxEx, CListBox)
 	m_clrItemHot	= Color(255,128,0,0);
 	m_clrTextNom	= Color(255,255,255,255);
 	m_clrTextHot	= Color(255,255,255,255);
-	
+
 	m_rcSBV			= CRect(0,0,0,0);
 	m_pwndSBV		= NULL;
 }
@@ -61,11 +61,11 @@ BOOL CListBoxEx::CreateContol(CWnd* pWnd, CRect rcSize, UINT ID)
 	BOOL ret = Create(WS_CHILD|WS_VISIBLE|WS_TABSTOP|LBS_OWNERDRAWVARIABLE|LBS_HASSTRINGS|LBS_NOTIFY, rcSize, pWnd, ID );
 
 	m_rcSBV = CRect(rcSize.Width()-20,0,rcSize.Width(),rcSize.Height());
-	//m_rcSBV = CRect(rcSize.right-20,0,rcSize.right,rcSize.Height());
+	//m_rcSBV = CRect(rcSize.right-31,0,rcSize.right-11,rcSize.Height());
 
 	m_pwndSBV = new CScrollBarEx();
-	m_pwndSBV->CreateContol(this,false,m_rcSBV,2020);
-	
+	m_pwndSBV->CreateContol(this,false,m_rcSBV,WM_USER);
+
 	return ret;
 }
 
@@ -83,12 +83,12 @@ BOOL CListBoxEx::InitControl(CWnd* pWnd)
 
 	//ret = Create(WS_CHILD|WS_VISIBLE|WS_TABSTOP|WS_VSCROLL|LBS_OWNERDRAWVARIABLE|LBS_HASSTRINGS, rect, pWnd, id );
 	ret = Create(WS_CHILD|WS_VISIBLE|WS_TABSTOP|LBS_OWNERDRAWVARIABLE|LBS_HASSTRINGS, rect, pWnd, id );
-	
+
 	m_rcSBV = CRect(rect.Width()-20,0,rect.Width(),rect.Height());
-	//m_rcSBV = CRect(rect.right-20,0,rect.right,rect.Height());
+	//m_rcSBV = CRect(rect.right-31,0,rect.right-11,rect.Height());
 
 	m_pwndSBV = new CScrollBarEx();
-	m_pwndSBV->CreateContol(this,false,m_rcSBV,2020);
+	m_pwndSBV->CreateContol(this,false,m_rcSBV,WM_USER);
 
 	return ret;
 }
@@ -115,7 +115,7 @@ void CListBoxEx::DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct)
 
 	if ((int)lpDrawItemStruct->itemID < 0)
 		return; 
-	
+
 	CString text;
 	GetText(lpDrawItemStruct->itemID, text);
 	CRect rect = lpDrawItemStruct->rcItem;
@@ -217,7 +217,7 @@ BOOL CListBoxEx::OnMouseWheel(UINT nFlags, short zDelta, CPoint pt)
 		SetTopIndex(GetTopIndex()+1);
 		m_pwndSBV->SetScrollPos(GetTopIndex()+1);
 	}
-	
+
 	return CListBox::OnMouseWheel(nFlags, zDelta, pt);
 }
 
@@ -237,7 +237,7 @@ BOOL CListBoxEx::OnEraseBkgnd(CDC* pDC)
 void CListBoxEx::OnSize(UINT nType, int cx, int cy)
 {
 	CListBox::OnSize(nType, cx, cy);
-	
+
 	// List Box의 세로길이가 변경되면 스크롤바를 제거 후 재 생성한다.
 	// MoveWindow 호출 시 크기 적용이 안되어 윈도우를 재 생성해서 해결 함. 
 	if (m_pwndSBV == NULL) return;
@@ -246,7 +246,7 @@ void CListBoxEx::OnSize(UINT nType, int cx, int cy)
 	delete m_pwndSBV;
 	m_pwndSBV = NULL;
 
- 	m_rcSBV.bottom = cy;
+	m_rcSBV.bottom = cy;
 	m_pwndSBV = new CScrollBarEx();
 	m_pwndSBV->CreateContol(this,false,m_rcSBV,1000);
 
@@ -271,4 +271,79 @@ void CListBoxEx::OnDestroy()
 		delete m_pwndSBV;
 		m_pwndSBV = NULL;
 	}
+}
+
+void CListBoxEx::SetColorBkg(int nA, COLORREF clrColor)
+{
+	int r = GetRValue(clrColor);
+	int g = GetGValue(clrColor);
+	int b = GetBValue(clrColor);
+
+	m_clrBkg = Color(nA, r, g, b); 
+	Invalidate();
+}
+
+void CListBoxEx::SetColorBorder(int nA, COLORREF clrColor)
+{
+	int r = GetRValue(clrColor);
+	int g = GetGValue(clrColor);
+	int b = GetBValue(clrColor);
+
+	m_clrBorder = Color(nA, r, g, b); 
+	Invalidate();
+}
+
+void CListBoxEx::SetColorTextHot(int nA, COLORREF clrColor)
+{
+	int r = GetRValue(clrColor);
+	int g = GetGValue(clrColor);
+	int b = GetBValue(clrColor);
+
+	m_clrTextHot = Color(nA, r, g, b); 
+	Invalidate();
+}
+
+void CListBoxEx::SetColorTextNormal(int nA, COLORREF clrColor)
+{
+	int r = GetRValue(clrColor);
+	int g = GetGValue(clrColor);
+	int b = GetBValue(clrColor);
+
+	m_clrTextNom = Color(nA, r, g, b); 
+	Invalidate();
+}
+
+void CListBoxEx::SetColorItemHot(int nA, COLORREF clrColor)
+{
+	int r = GetRValue(clrColor);
+	int g = GetGValue(clrColor);
+	int b = GetBValue(clrColor);
+
+	m_clrItemHot = Color(nA, r, g, b); 
+	Invalidate();
+}
+
+void CListBoxEx::SetColorItemNomal(int nA, COLORREF clrColor)
+{
+	int r = GetRValue(clrColor);
+	int g = GetGValue(clrColor);
+	int b = GetBValue(clrColor);
+
+	m_clrItemNom1 = Color(nA, r, g, b); 
+	Invalidate();
+}
+
+void CListBoxEx::SetColorItemNomal(int nA1, COLORREF clrColor1, int nA2, COLORREF clrColor2)
+{
+	int r1 = GetRValue(clrColor1);
+	int g1 = GetGValue(clrColor1);
+	int b1 = GetBValue(clrColor1);
+
+	int r2 = GetRValue(clrColor2);
+	int g2 = GetGValue(clrColor2);
+	int b2 = GetBValue(clrColor2);
+
+	m_clrItemNom1 = Color(nA1, r1, g1, b1); 
+	m_clrItemNom2 = Color(nA2, r2, g2, b2); 
+	Invalidate();
 }
